@@ -21,10 +21,22 @@ export const InputContainer = styled.form`
   flex-wrap: nowrap;
 `;
 
-export const Input = styled.input`
+export const Input = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const EmailInput = styled.input`
   width: 50em;
   height: 74px;
   border: none;
   outline: none;
   padding-left: 10px;
+`;
+
+export const ErrorText = styled.p`
+  color: ${Theme.colors.primary};
+  font-family: ${Theme.font.family.primary};
+  font-size: ${Theme.font.size.regular};
+  font-weight: ${Theme.font.weight.regular};
 `;

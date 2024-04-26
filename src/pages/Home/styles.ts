@@ -11,4 +11,5 @@ export const BackgroundImage = styled.img`
   width: 32em;
   height: 48em;
   right: 36px;
+  z-index: -1;
 `;
