@@ -3,12 +3,15 @@ import validator from "validator";
 import Button from "../../../components/Button";
 import Title from "../../../components/Title";
 import * as S from "./styles";
+import keys from "../../../config/keys";
+import emailjs from "@emailjs/browser";
 
 interface FormProps {
   email: string;
 }
 
 export default function Presentation() {
+  const { EMAIL_PUBLIC_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID } = keys();
   const {
     register,
     handleSubmit,
@@ -25,6 +28,32 @@ export default function Presentation() {
     alert(
       `Obrigado pela sua assinatura, você receberá nossas novidades no e-mail ${data.email}`
     );
+
+    const templateParams = {
+      from_name: "Casa Verde",
+      email: "casaverde@email.com",
+      to_email: data.email,
+      to_name: data.email.split("@")[0],
+      message: `Olá, ${data.email.split("@")[0]}.
+
+      Boas-vindas à Casa Verde! Você se cadastrou em nossa newsletter e vai começar a receber e-mails com as novidades de nossa loja e dicas de como cuidar de suas plantas.
+      
+      Até logo!`,
+    };
+
+    console.log(templateParams);
+
+    emailjs
+      .send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams, {
+        publicKey: EMAIL_PUBLIC_KEY,
+      })
+      .then((response: any) => {
+        console.log("SUCESS!", response.status, response.text);
+      })
+      .catch((error: any) => {
+        console.log("FAILED...", error);
+      });
+
     reset();
   };
 
