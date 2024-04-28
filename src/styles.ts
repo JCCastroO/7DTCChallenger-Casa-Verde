@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import background from "./assets/images/background.png";
 import yellowSplash from "./assets/images/yellowSplash.png";
 
 export const Container = styled.div`
-  min-height: 100vh;
-  background-image: url(${background});
+  min-height: 220vh;
   display: flex;
   justify-content: center;
   padding: 0 15em;

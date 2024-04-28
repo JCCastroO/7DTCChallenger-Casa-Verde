@@ -3,15 +3,13 @@ import validator from "validator";
 import Button from "../../../components/Button";
 import Title from "../../../components/Title";
 import * as S from "./styles";
-import keys from "../../../config/keys";
-import emailjs from "@emailjs/browser";
+import { sendEmail } from "../../../utils/utils";
 
 interface FormProps {
   email: string;
 }
 
 export default function Presentation() {
-  const { EMAIL_PUBLIC_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID } = keys();
   const {
     register,
     handleSubmit,
@@ -40,19 +38,7 @@ export default function Presentation() {
       
       Até logo!`,
     };
-
-    console.log(templateParams);
-
-    emailjs
-      .send(EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, templateParams, {
-        publicKey: EMAIL_PUBLIC_KEY,
-      })
-      .then((response: any) => {
-        console.log("SUCESS!", response.status, response.text);
-      })
-      .catch((error: any) => {
-        console.log("FAILED...", error);
-      });
+    sendEmail(templateParams);
 
     reset();
   };

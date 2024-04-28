@@ -13,3 +13,19 @@ export const BackgroundImage = styled.img`
   right: 36px;
   z-index: -1;
 `;
+
+export const PrincipalContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 110px;
+`;
+
+export const CardTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 55px;
+`;
