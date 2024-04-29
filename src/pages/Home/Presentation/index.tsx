@@ -17,8 +17,8 @@ export default function Presentation() {
     reset,
   } = useForm<FormProps>();
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     return handleSubmit(handleSend)();
   };
 
@@ -52,7 +52,7 @@ export default function Presentation() {
         assine nossa newsletter para saber das novidades da marca.
       </S.SubTitle>
       <S.Input>
-        <S.InputContainer onSubmit={(event) => onSubmit(event)}>
+        <S.InputContainer onSubmit={(e) => onSubmit(e)}>
           <S.EmailInput
             placeholder="Insira seu e-mail"
             {...register("email", {

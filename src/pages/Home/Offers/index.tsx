@@ -8,13 +8,15 @@ export default function Offers() {
   const { data, error } = useSelector((state: RootState) => state.plants);
 
   useEffect(() => {
-    if (error) console.log(error);
+    if (error.hasError) console.log(error);
   }, [error]);
 
   return (
     <S.Container>
       {data.map((item, index) => {
-        return <Card type="offers" item={item} key={index} />;
+        return (
+          item.ordem !== 0 && <Card type="offers" item={item} key={index} />
+        );
       })}
     </S.Container>
   );
