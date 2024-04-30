@@ -1,7 +1,6 @@
 import * as S from "./styles";
 import plant from "../../assets/images/plant.png";
 import Presentation from "./Presentation";
-import keys from "../../config/keys";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -23,8 +22,9 @@ interface FormProps {
 }
 
 export default function Home() {
+  const PLANT_API =
+    "https://gist.githubusercontent.com/bugan/41d60ffa23fa0c4044cc138bf670780d/raw?utm_medium=email&_hsenc=p2ANqtz--6VX19s7tw5HQ-odB_03vW4_-fxO3sAFg69Ai1z6WEMpOyWNpVqRlpCyjRRUA3fKrDXtLR9LMubFVPA9bKT43e_3LKiI1g6CjRwR44klDeTKFWGqc&_hsmi=231361624&utm_content=231361624&utm_source=hs_automation/";
   const { register, handleSubmit, reset } = useForm<FormProps>();
-  const { PLANT_API } = keys();
   const dispatch = useDispatch();
   const [modal, setModal] = useState<boolean>(false);
   const [order, setOrder] = useState<"grow" | "desc">("desc");
